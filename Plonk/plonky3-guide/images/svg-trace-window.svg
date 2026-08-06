@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" font-family="'PingFang SC','Microsoft YaHei','Segoe UI',system-ui,sans-serif">
+  <rect width="900" height="380" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">AIR：执行轨迹表 + 滑动 2 行窗口写约束</text>
+
+  <!-- window highlight behind rows 1 & 2 -->
+  <rect x="150" y="146" width="420" height="112" rx="8" fill="#e6f7f3" stroke="#10a37f" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="360" y="140" text-anchor="middle" font-size="13" font-weight="700" fill="#047857">窗口 WINDOW = 2</text>
+
+  <!-- table header -->
+  <g>
+    <rect x="150" y="78" width="140" height="40" fill="#0f172a"/><text x="220" y="104" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">行号</text>
+    <rect x="290" y="78" width="140" height="40" fill="#0f172a"/><text x="360" y="104" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">列 c₀</text>
+    <rect x="430" y="78" width="140" height="40" fill="#0f172a"/><text x="500" y="104" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">列 c₁</text>
+  </g>
+
+  <!-- rows -->
+  <g font-size="14" fill="#0f172a">
+    <rect x="150" y="118" width="140" height="36" fill="#f8fafc" stroke="#cbd5e1"/><text x="220" y="141" text-anchor="middle">第 0 行</text>
+    <rect x="290" y="118" width="140" height="36" fill="#fff" stroke="#cbd5e1"/><rect x="430" y="118" width="140" height="36" fill="#fff" stroke="#cbd5e1"/>
+
+    <rect x="150" y="154" width="140" height="36" fill="#d1fae5" stroke="#10a37f"/><text x="220" y="177" text-anchor="middle" font-weight="700">第 i 行</text>
+    <rect x="290" y="154" width="140" height="36" fill="#d1fae5" stroke="#10a37f"/><text x="360" y="177" text-anchor="middle">current</text>
+    <rect x="430" y="154" width="140" height="36" fill="#d1fae5" stroke="#10a37f"/>
+
+    <rect x="150" y="190" width="140" height="36" fill="#d1fae5" stroke="#10a37f"/><text x="220" y="213" text-anchor="middle" font-weight="700">第 i+1 行</text>
+    <rect x="290" y="190" width="140" height="36" fill="#d1fae5" stroke="#10a37f"/><text x="360" y="213" text-anchor="middle">next</text>
+    <rect x="430" y="190" width="140" height="36" fill="#d1fae5" stroke="#10a37f"/>
+
+    <rect x="150" y="226" width="140" height="36" fill="#f8fafc" stroke="#cbd5e1"/><text x="220" y="249" text-anchor="middle">第 … 行</text>
+    <rect x="290" y="226" width="140" height="36" fill="#fff" stroke="#cbd5e1"/><rect x="430" y="226" width="140" height="36" fill="#fff" stroke="#cbd5e1"/>
+  </g>
+
+  <!-- constraint arrow current -> next in col c0 -->
+  <path d="M 360 190 L 360 158" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#warrow)"/>
+  <defs>
+    <marker id="warrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- right note -->
+  <g transform="translate(600,120)">
+    <rect x="0" y="0" width="280" height="200" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="20" y="32" font-size="15" font-weight="700" fill="#0f172a">一个约束最多看连续 2 行</text>
+    <text x="20" y="60" font-size="14" fill="#0f172a">main.current(k)  ← 当前行第 k 列</text>
+    <text x="20" y="82" font-size="14" fill="#0f172a">main.next(k)     ← 下一行第 k 列</text>
+    <text x="20" y="116" font-size="14" fill="#2563eb">转移约束例：</text>
+    <text x="20" y="138" font-size="13" fill="#0f172a" font-family="'Segoe UI',monospace">when_transition().assert_eq(</text>
+    <text x="20" y="158" font-size="13" fill="#0f172a" font-family="'Segoe UI',monospace">    next(k), current(k) + 1);</text>
+    <text x="20" y="186" font-size="12" fill="#64748b">选择器 when_* 把“条件”乘进约束。</text>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" font-family="'PingFang SC','Microsoft YaHei','Segoe UI',system-ui,sans-serif">
+  <rect width="900" height="320" fill="#ffffff"/>
+  <text x="450" y="36" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">Reed–Solomon 低度扩展：加冗余 → “低次” 翻译成 “冗余足够”</text>
+
+  <!-- message bar (left) -->
+  <text x="140" y="120" text-anchor="middle" font-size="14" fill="#0f172a">多项式 f, 次数 &lt; n</text>
+  <rect x="60" y="135" width="170" height="40" rx="6" fill="#e6f7f3" stroke="#10a37f" stroke-width="2"/>
+  <g fill="#0f172a">
+    <circle cx="90" cy="155" r="7"/><circle cx="130" cy="155" r="7"/><circle cx="170" cy="155" r="7"/><circle cx="210" cy="155" r="7"/>
+  </g>
+  <text x="145" y="200" text-anchor="middle" font-size="13" fill="#64748b">n 个原始求值点</text>
+
+  <!-- arrow -->
+  <line x1="245" y1="155" x2="365" y2="155" stroke="#2563eb" stroke-width="2.5" marker-end="url(#larrow)"/>
+  <text x="305" y="142" text-anchor="middle" font-size="13" fill="#2563eb" font-weight="700">LDE</text>
+  <text x="305" y="178" text-anchor="middle" font-size="12" fill="#64748b">(coset FFT)</text>
+  <defs>
+    <marker id="larrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- codeword bar (right) -->
+  <text x="640" y="120" text-anchor="middle" font-size="14" fill="#0f172a">扩展码字, 长度 m</text>
+  <rect x="385" y="135" width="510" height="40" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <g>
+    <circle cx="410" cy="155" r="7" fill="#0f172a"/>
+    <circle cx="470" cy="155" r="7" fill="#10a37f"/>
+    <circle cx="530" cy="155" r="7" fill="#0f172a"/>
+    <circle cx="590" cy="155" r="7" fill="#dc2626"/>
+    <circle cx="650" cy="155" r="7" fill="#10a37f"/>
+    <circle cx="710" cy="155" r="7" fill="#0f172a"/>
+    <circle cx="770" cy="155" r="7" fill="#10a37f"/>
+    <circle cx="830" cy="155" r="7" fill="#0f172a"/>
+  </g>
+  <!-- correction arrow on red dot -->
+  <path d="M 590 130 q 30 -30 0 -55" fill="none" stroke="#dc2626" stroke-width="1.6" marker-end="url(#rarrow)"/>
+  <text x="612" y="92" font-size="12" fill="#dc2626">少量错误可纠正</text>
+  <defs>
+    <marker id="rarrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#dc2626"/>
+    </marker>
+  </defs>
+  <g font-size="12" fill="#64748b" text-anchor="middle">
+    <text x="410" y="200">原值</text><text x="470" y="200">冗余</text><text x="530" y="200">原值</text><text x="590" y="200">错误</text>
+    <text x="650" y="200">冗余</text><text x="710" y="200">原值</text><text x="770" y="200">冗余</text><text x="830" y="200">原值</text>
+  </g>
+
+  <!-- rate -->
+  <rect x="120" y="240" width="660" height="56" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="450" y="266" text-anchor="middle" font-size="15" fill="#0f172a">码率 ρ = n/m　（Plonky3 默认 ρ = 1/2，即 log_blowup = 1）</text>
+  <text x="450" y="288" text-anchor="middle" font-size="13" fill="#64748b">ρ 越低 → 冗余越多 → 可靠性越高，但证明越大、越慢。FRI 检验的正是这种冗余。</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" font-family="'PingFang SC','Microsoft YaHei','Segoe UI',system-ui,sans-serif">
+  <rect width="760" height="470" fill="#ffffff"/>
+  <text x="380" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">扩域塔：小域管“快”，扩域管“安全”</text>
+
+  <!-- top tier QM31 -->
+  <rect x="90" y="74" width="580" height="74" rx="10" fill="#10a37f"/>
+  <text x="110" y="104" font-size="17" font-weight="700" fill="#ffffff">QM31 （4 次扩域）</text>
+  <text x="110" y="128" font-size="13" fill="#e6f7f3">≈ 124-bit 安全 · sumcheck / 约束随机性在此采样</text>
+  <text x="640" y="116" text-anchor="end" font-size="15" font-weight="700" fill="#ffffff">124 bit</text>
+
+  <!-- mid tier Complex<M31> -->
+  <rect x="90" y="186" width="580" height="74" rx="10" fill="#5eead4" stroke="#10a37f" stroke-width="2"/>
+  <text x="110" y="216" font-size="17" font-weight="700" fill="#0f172a">Complex&lt;M31&gt; = F_p[i] （2 次扩域，i²=−1）</text>
+  <text x="110" y="240" font-size="13" fill="#0f172a">≈ 62-bit · circle FFT 在此层运行</text>
+  <text x="640" y="228" text-anchor="end" font-size="15" font-weight="700" fill="#0f172a">62 bit</text>
+
+  <!-- bottom tier M31 -->
+  <rect x="90" y="298" width="580" height="74" rx="10" fill="#e6f7f3" stroke="#10a37f" stroke-width="2"/>
+  <text x="110" y="328" font-size="17" font-weight="700" fill="#0f172a">Mersenne31 · F_p , p = 2³¹−1 （基域）</text>
+  <text x="110" y="352" font-size="13" fill="#0f172a">31-bit · trace、承诺、SIMD 打包都在此层，算术最快</text>
+  <text x="640" y="340" text-anchor="end" font-size="15" font-weight="700" fill="#0f172a">31 bit</text>
+
+  <!-- expansion arrows -->
+  <g stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#tarrow)">
+    <line x1="380" y1="296" x2="380" y2="264"/>
+    <line x1="380" y1="184" x2="380" y2="152"/>
+  </g>
+  <text x="392" y="284" font-size="13" fill="#2563eb">×i 扩张</text>
+  <text x="392" y="172" font-size="13" fill="#2563eb">再扩张</text>
+  <defs>
+    <marker id="tarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="420" text-anchor="middle" font-size="13" fill="#64748b">基域太小 → 挑战熵不足 → 在更大扩域里采样补足安全；但“重量活”仍留在便宜的小基域。</text>
+  <text x="380" y="442" text-anchor="middle" font-size="12" fill="#64748b">（BabyBear / KoalaBear 同理：基域 31-bit，4 次扩域 ≈ 124-bit。）</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="'PingFang SC','Microsoft YaHei','Segoe UI',system-ui,sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">circle 群：让 2-adicity=1 的 Mersenne31 也能做 FFT</text>
+
+  <!-- axes -->
+  <g stroke="#e5e7eb" stroke-width="1">
+    <line x1="120" y1="230" x2="470" y2="230"/>
+    <line x1="295" y1="80" x2="295" y2="380"/>
+  </g>
+  <text x="465" y="244" font-size="12" fill="#94a3b8">x</text>
+  <text x="300" y="88" font-size="12" fill="#94a3b8">y</text>
+
+  <!-- circle x²+y²=1 -->
+  <circle cx="295" cy="230" r="140" fill="none" stroke="#10a37f" stroke-width="2.5"/>
+  <text x="300" y="395" text-anchor="middle" font-size="14" fill="#0f172a" font-style="italic">x² + y² = 1   （阶 = p+1 = 2³¹）</text>
+
+  <!-- texture points -->
+  <g fill="#a7f3d0">
+    <circle cx="435" cy="230" r="4"/><circle cx="394" cy="131" r="4"/><circle cx="295" cy="90" r="4"/>
+    <circle cx="196" cy="131" r="4"/><circle cx="155" cy="230" r="4"/><circle cx="196" cy="329" r="4"/>
+    <circle cx="295" cy="370" r="4"/><circle cx="394" cy="329" r="4"/>
+  </g>
+
+  <!-- P and 2P -->
+  <circle cx="416" cy="160" r="6" fill="#2563eb"/><text x="426" y="156" font-size="13" fill="#2563eb" font-weight="700">P</text>
+  <circle cx="365" cy="109" r="6" fill="#0f172a"/><text x="338" y="104" font-size="13" fill="#0f172a" font-weight="700">2P</text>
+  <!-- doubling arrow (curved) -->
+  <path d="M 416 160 A 140 140 0 0 0 365 109" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#carrow)"/>
+  <text x="470" y="120" font-size="13" fill="#2563eb">倍映射 z↦z²</text>
+
+  <defs>
+    <marker id="carrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <!-- right explanation -->
+  <g transform="translate(520,70)">
+    <rect x="0" y="0" width="360" height="320" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="18" y="32" font-size="15" font-weight="700" fill="#0f172a">问题 → 解法</text>
+    <text x="18" y="62" font-size="14" fill="#b91c1c">• 基域 F_p*：2-adicity = 1</text>
+    <text x="34" y="82" font-size="13" fill="#64748b">找不到 4 阶及以上的 2-幂单位根，</text>
+    <text x="34" y="100" font-size="13" fill="#64748b">标准 radix-2 FFT 直接失效。</text>
+
+    <text x="18" y="134" font-size="14" fill="#10a37f">• circle 群 C(F_p)：阶 = p+1 = 2³¹</text>
+    <text x="34" y="154" font-size="13" fill="#64748b">提供 31 层 2-adic 结构，足够任意规模 FFT。</text>
+
+    <text x="18" y="188" font-size="14" fill="#0f172a">• 倍映射 = 复数自平方</text>
+    <text x="34" y="210" font-size="13" fill="#0f172a" font-family="'Segoe UI',monospace">(x, y) ↦ (2x² − 1, 2xy)</text>
+    <text x="34" y="230" font-size="13" fill="#64748b">扮演普通 FFT 里 ω ↦ ω² 的“二分”角色。</text>
+
+    <text x="18" y="264" font-size="14" fill="#0f172a">→ Reed–Solomon / FRI 搬到 circle 群</text>
+    <text x="18" y="286" font-size="14" font-weight="700" fill="#0f172a">   = circle STARK（eprint 2023/824）</text>
+    <text x="18" y="306" font-size="12" fill="#64748b">工程实现：长 n 的 M31-DFT 折算为长 n/2 的 Complex&lt;M31&gt;-DFT。</text>
+  </g>
+</svg>

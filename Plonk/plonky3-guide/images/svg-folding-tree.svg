@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="'PingFang SC','Microsoft YaHei','Segoe UI',system-ui,sans-serif">
+  <rect width="900" height="540" fill="#ffffff"/>
+  <text x="450" y="40" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">FRI 承诺阶段：每轮把码字对半折叠，多项式次数减半</text>
+
+  <!-- bars: f0 long -> final short -->
+  <g>
+    <rect x="120" y="92" width="600" height="42" rx="6" fill="#e6f7f3" stroke="#10a37f" stroke-width="2"/>
+    <text x="130" y="119" font-size="15" fill="#0f172a">码字 f₀（长度 m）</text>
+    <circle cx="780" cy="113" r="20" fill="#10a37f"/><text x="780" y="119" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">C₀</text>
+  </g>
+  <g>
+    <rect x="240" y="182" width="360" height="42" rx="6" fill="#e6f7f3" stroke="#10a37f" stroke-width="2"/>
+    <text x="250" y="209" font-size="15" fill="#0f172a">f₁（长度 m/2）</text>
+    <circle cx="780" cy="203" r="20" fill="#10a37f"/><text x="780" y="209" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">C₁</text>
+  </g>
+  <g>
+    <rect x="320" y="272" width="200" height="42" rx="6" fill="#e6f7f3" stroke="#10a37f" stroke-width="2"/>
+    <text x="330" y="299" font-size="15" fill="#0f172a">f₂（m/4）</text>
+    <circle cx="780" cy="293" r="20" fill="#10a37f"/><text x="780" y="299" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">C₂</text>
+  </g>
+  <g>
+    <rect x="385" y="362" width="70" height="40" rx="6" fill="#10a37f"/>
+    <text x="420" y="388" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">final_poly</text>
+  </g>
+  <text x="420" y="430" text-anchor="middle" font-size="13" fill="#64748b">（常数级，直接发出系数）</text>
+
+  <!-- fold arrows -->
+  <g stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <line x1="420" y1="140" x2="420" y2="178"/>
+    <line x1="420" y1="230" x2="420" y2="268"/>
+    <line x1="420" y1="320" x2="420" y2="358"/>
+  </g>
+  <text x="438" y="162" font-size="14" fill="#2563eb">fold β₁</text>
+  <text x="438" y="252" font-size="14" fill="#2563eb">fold β₂</text>
+  <text x="438" y="342" font-size="14" fill="#2563eb">fold β₃</text>
+
+  <!-- Merkle observe note -->
+  <text x="780" y="335" text-anchor="middle" font-size="12" fill="#64748b">每轮一棵 Merkle 树</text>
+  <text x="780" y="352" text-anchor="middle" font-size="12" fill="#64748b">承诺 + observe 进 transcript</text>
+
+  <!-- fold formula -->
+  <rect x="60" y="460" width="780" height="62" rx="8" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="80" y="486" font-size="14" fill="#0f172a">折叠（arity-2）的代数含义：把 f 拆成偶部 p_e 与奇部 p_o，再用本轮挑战 β 组合——</text>
+  <text x="80" y="508" font-size="14" fill="#0f172a" font-family="'Segoe UI',monospace">p_e(x²)=(f(x)+f(−x))/2 ， p_o(x²)=(f(x)−f(−x))/(2x) ，  结果(x²)=p_e(x²)+β·p_o(x²)</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+</svg>

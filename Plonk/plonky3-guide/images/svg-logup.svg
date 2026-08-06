@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" font-family="'PingFang SC','Microsoft YaHei','Segoe UI',system-ui,sans-serif">
+  <rect width="900" height="360" fill="#ffffff"/>
+  <text x="450" y="34" text-anchor="middle" font-size="21" font-weight="700" fill="#0f172a">LogUp：取对数导数，把“乘积相等”变“求和相等”</text>
+
+  <!-- left card: multiplicative -->
+  <rect x="40" y="70" width="340" height="220" rx="12" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="210" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#b91c1c">乘积相等（高次，昂贵）</text>
+  <text x="210" y="140" text-anchor="middle" font-size="15" fill="#0f172a" font-family="'Segoe UI',monospace">∏(X − aᵢ) = ∏(X − bⱼ)</text>
+  <!-- product factors -->
+  <g font-size="13" fill="#0f172a" font-family="'Segoe UI',monospace" text-anchor="middle">
+    <text x="90" y="185">(X−a₀)·</text><text x="155" y="185">(X−a₁)·</text><text x="220" y="185">(X−a₂)…</text>
+  </g>
+  <text x="210" y="225" text-anchor="middle" font-size="13" fill="#64748b">“A 的元素多重集 = B 的元素多重集”</text>
+  <text x="210" y="252" text-anchor="middle" font-size="13" fill="#dc2626">次数随元素数线性增长，sumcheck 不友好</text>
+
+  <!-- arrow -->
+  <text x="450" y="160" text-anchor="middle" font-size="14" font-weight="700" fill="#10a37f">取对数导数</text>
+  <text x="450" y="180" text-anchor="middle" font-size="13" fill="#64748b" font-family="'Segoe UI',monospace">d/dX log(·)</text>
+  <line x1="390" y1="185" x2="510" y2="185" stroke="#10a37f" stroke-width="2.5" marker-end="url(#luarrow)"/>
+  <defs>
+    <marker id="luarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 z" fill="#10a37f"/>
+    </marker>
+  </defs>
+
+  <!-- right card: additive -->
+  <rect x="520" y="70" width="340" height="220" rx="12" fill="#e6f7f3" stroke="#10a37f"/>
+  <text x="690" y="100" text-anchor="middle" font-size="16" font-weight="700" fill="#047857">求和相等（分式和，sumcheck 友好）</text>
+  <text x="690" y="140" text-anchor="middle" font-size="15" fill="#0f172a" font-family="'Segoe UI',monospace">Σ mᵢ/(α − aᵢ) = Σ mⱼ′/(α − bⱼ)</text>
+  <g font-size="13" fill="#0f172a" font-family="'Segoe UI',monospace" text-anchor="middle">
+    <text x="600" y="185">m₀/(α−a₀) +</text><text x="720" y="185">m₁/(α−a₁) + …</text>
+  </g>
+  <text x="690" y="225" text-anchor="middle" font-size="13" fill="#64748b">在随机点 α 处检验两个分式和相等</text>
+  <text x="690" y="252" text-anchor="middle" font-size="13" fill="#047857">无需高次求幂，直接交给 sumcheck</text>
+
+  <text x="450" y="330" text-anchor="middle" font-size="13" fill="#64748b">mᵢ、mⱼ′ 为多重数；α、β 为挑战（β 用来把宽元组压成单值）。这就是 Plonky3 lookup 的核心。</text>
+</svg>
